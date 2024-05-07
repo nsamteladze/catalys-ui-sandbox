@@ -4,8 +4,6 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="150" height="150" />
-
     <div class="wrapper">
       <HelloWorld />
     </div>
@@ -19,7 +17,7 @@ body #app header {
 }
 header{
   height: 100vh;
-  width: 100vw;
+  width: 100vh;
   display:flex;
   align-items:center;
   justify-content:center;
