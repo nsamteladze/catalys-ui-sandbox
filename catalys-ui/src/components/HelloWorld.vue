@@ -77,13 +77,13 @@ import Avatar from 'primevue/avatar';
       </div>
     </div>
     <div class="min-h-screen w-8 flex flex-column relative flex-auto">
-      <div class="p-5 flex flex-column flex-auto" style="height: 100px;">
+      <div class="p-5 flex flex-column flex-auto max-h-screen">
         <MarkdownRenderer />
       </div>
     </div>
     <div class="min-h-screen flex flex-column relative flex-auto">
       
-      <div class="p-5 flex flex-column flex-auto" style="height: 100px;">
+      <div class="p-5 flex flex-column flex-auto max-h-screen">
         <div class="p-5 border-2 border-dashed surface-border border-round surface-section flex-1 w-20rem">
             [PLACEHOLDER] <br />
             Chatbot Interface
