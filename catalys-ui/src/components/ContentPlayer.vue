@@ -14,6 +14,8 @@ import Chatbot from './Chatbot.vue'
 //   // window.scrollTo(0, top);
 // }
 
+let testCall: any = {}
+
 const markdownRenderer = ref();
 
 const obj = reactive({ area: 1 })
@@ -31,7 +33,7 @@ onMounted(() => {
   }
 })
 
-const changeArea = (value) => {
+const changeArea = (value: any) => {
   obj.area == value
 }
 

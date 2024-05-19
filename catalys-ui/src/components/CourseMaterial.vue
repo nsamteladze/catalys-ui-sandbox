@@ -4,6 +4,8 @@ import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import Button from 'primevue/button';
 
+let active: any = {};
+
 </script>
 
 <template>
