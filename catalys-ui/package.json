@@ -16,6 +16,7 @@
     "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.1",
     "@types/node": "^16.11.68",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/tsconfig": "^0.1.3",
