@@ -76,7 +76,7 @@ import Avatar from 'primevue/avatar';
         </div>
       </div>
     </div>
-    <div class="min-h-screen w-4 flex flex-column relative flex-auto">
+    <div class="min-h-screen w-8 flex flex-column relative flex-auto">
       <div
         class="flex justify-content-between align-items-end px-5 surface-0 border-bottom-1 surface-border relative lg:static"
         style="height:60px">
