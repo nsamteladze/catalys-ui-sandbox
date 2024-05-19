@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, reactive } from 'vue'
 import InputText from 'primevue/inputtext';
 import markdownit from 'markdown-it';
 import MarkdownRenderer from './MarkdownRenderer.vue'
+import CourseMaterial from './CourseMaterial.vue'
 import Chatbot from './Chatbot.vue'
 
 // const scrollToContent = () => {
@@ -15,14 +16,23 @@ import Chatbot from './Chatbot.vue'
 
 const markdownRenderer = ref();
 
+const obj = reactive({ area: 1 })
+
+watch(
+  () => obj.area,
+  (area) => {
+    console.log(`Area is: ${area}`)
+  }
+)
+
 onMounted(() => {
   const testCallMounted = () => {
     markdownRenderer.value.scrollToContent();
   }
 })
 
-const testCall = () => {
-    markdownRenderer.value.scrollToContent();
+const changeArea = (value) => {
+  obj.area == value
 }
 
 </script>
@@ -44,11 +54,13 @@ const testCall = () => {
         <!-- Area navigation menu -->
         <div class="overflow-y-auto mt-3">
           <a v-ripple
-            class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round bg-indigo-500 hover:bg-indigo-500 text-white hover:text-white transition-duration-150 transition-colors p-ripple">
+            class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round bg-indigo-500 hover:bg-indigo-500 text-white hover:text-white transition-duration-150 transition-colors p-ripple"
+            @click="obj.area = 1">
             <span class="font-medium">Content Player</span>
           </a>
           <a v-ripple
-            class="m-3 mt-0 flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
+            class="m-3 mt-0 flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple"
+            @click="obj.area = 2">
             <span class="font-medium">Student Portal</span>
           </a>
           <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800" />
@@ -110,7 +122,8 @@ const testCall = () => {
     <!-- Rendered markdown -->
     <div class="min-h-screen w-8 flex flex-column relative flex-auto">
       <div class="p-3 flex flex-column flex-auto max-h-screen">
-        <MarkdownRenderer ref="markdownRenderer"/>
+        <MarkdownRenderer ref="markdownRenderer" v-show="obj.area == 1"/>
+        <CourseMaterial v-show="obj.area == 2"/>
       </div>
     </div>
 
