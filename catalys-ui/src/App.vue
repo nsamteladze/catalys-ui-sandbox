@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue'
+import ContentPlayer from './components/ContentPlayer.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld />
+      <ContentPlayer />
     </div>
   </header>
 </template>

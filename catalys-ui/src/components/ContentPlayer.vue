@@ -2,19 +2,25 @@
 import InputText from 'primevue/inputtext';
 import markdownit from 'markdown-it';
 import MarkdownRenderer from './MarkdownRenderer.vue'
-import Avatar from 'primevue/avatar';
+import Chatbot from './Chatbot.vue'
 
 </script>
 
 <template>
-
   <div class="min-h-screen flex relative lg:static surface-ground">
-    <div id="app-sidebar-3"
-      class="bg-gray-100 h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 border-gray-800 select-none" style="width:280px">
+    <!-- Navigation sidebar -->
+    <div 
+      id="app-sidebar-3" 
+      class="bg-gray-100 h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 border-gray-800 select-none" 
+      style="width:280px">
+
       <div class="flex flex-column h-full">
-        <div class="flex align-items-center px-4 flex-shrink-0 mt-3">
+        <!-- Catalys logo -->
+        <div class="flex flex-shrink-0">
           <img src="../assets/logo_color_no_background.svg" alt="Image" height="50" />
         </div>
+        
+        <!-- Area navigation menu -->
         <div class="overflow-y-auto mt-3">          
           <a v-ripple
             class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round bg-indigo-500 hover:bg-indigo-500 text-white hover:text-white transition-duration-150 transition-colors p-ripple">
@@ -26,6 +32,8 @@ import Avatar from 'primevue/avatar';
           </a>
           <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800" />
         </div>
+
+        <!-- Course navigation menu -->
         <div class="overflow-y-auto">
           <ul class="list-none p-3 m-0">
             <li>
@@ -76,18 +84,18 @@ import Avatar from 'primevue/avatar';
         </div>
       </div>
     </div>
+
+    <!-- Rendered markdown -->
     <div class="min-h-screen w-8 flex flex-column relative flex-auto">
-      <div class="p-5 flex flex-column flex-auto max-h-screen">
+      <div class="p-3 flex flex-column flex-auto max-h-screen">
         <MarkdownRenderer />
       </div>
     </div>
+
+    <!-- Placeholder for Chatbot Interface -->
     <div class="min-h-screen flex flex-column relative flex-auto">
-      
-      <div class="p-5 flex flex-column flex-auto max-h-screen">
-        <div class="p-5 border-2 border-dashed surface-border border-round surface-section flex-1 w-20rem">
-            [PLACEHOLDER] <br />
-            Chatbot Interface
-        </div>
+      <div class="py-3 pr-3 flex flex-column flex-auto max-h-screen">
+          <Chatbot />
       </div>
     </div>
   </div>
