@@ -1,13 +1,20 @@
 <script lang="ts" setup>
 import markdownit from 'markdown-it';
+import { ref, onMounted } from 'vue';
 
-const md = markdownit()
+const md = markdownit({
+  html: false,
+  breaks: true,
+  linkify: true,
+  typographer: true
+})
+
 const result = md.render(`
 ## Chapter 2: An Introduction to Financial Statements
 
 ### The Four Financial Statements
 
-Are you a fan of books, movies, or sports? If so, chances are you have heard or said the phrase “spoiler alert.” It is used to forewarn readers, viewers, or fans that the ending of a movie or book or outcome of a game is about to be revealed. Some people prefer knowing the end and skipping all of the details in the middle, while others prefer to fully immerse themselves and then discover the outcome. People often do not know or understand what accountants produce or provide. That is, they are not familiar with the “ending” of the accounting process, but that is the best place to begin the study of accounting.
+Are you a fan of books, movies, or sporsts? If so, chances are you have heard or said the phrase “spoiler alert.” It is used to forewarn readers, viewers, or fans that the ending of a movie or book or outcome of a game is about to be revealed. Some people prefer knowing the end and skipping all of the details in the middle, while others prefer to fully immerse themselves and then discover the outcome. People often do not know or understand what accountants produce or provide. That is, they are not familiar with the “ending” of the accounting process, but that is the best place to begin the study of accounting.
 
 Accountants create what are known as financial statements. Financial statements are reports that communicate the financial performance and financial position of the organization.
 
@@ -653,6 +660,26 @@ A company that wants to budget properly, control costs, increase revenues, and m
 
 Placeholder for comprehension check questions.
 `);
+
+const testAnchor = ref(null);
+
+const scrollToContent = () => {
+  console.log('Called MarkdownRenderer/scrollToContent')
+}
+
+onMounted(() => {
+  const scrollToContentMounted = () => {
+    console.log('Called MarkdownRenderer/scrollToContentMounted')
+    var element = this.$refs['TestAnchor'];
+    var top = element.offsetTop;
+    window.scrollTo(0, top);
+  }
+})
+
+defineExpose({
+  testAnchor,
+  scrollToContent
+});
 </script>
 
 <template>

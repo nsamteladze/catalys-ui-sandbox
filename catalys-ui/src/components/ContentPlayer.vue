@@ -1,8 +1,29 @@
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue'
 import InputText from 'primevue/inputtext';
 import markdownit from 'markdown-it';
 import MarkdownRenderer from './MarkdownRenderer.vue'
 import Chatbot from './Chatbot.vue'
+
+// const scrollToContent = () => {
+//   this.$alert('Scrolling to content...')
+
+//   // var element = this.$refs[refName];
+//   // var top = element.offsetTop;
+//   // window.scrollTo(0, top);
+// }
+
+const markdownRenderer = ref();
+
+onMounted(() => {
+  const testCallMounted = () => {
+    markdownRenderer.value.scrollToContent();
+  }
+})
+
+const testCall = () => {
+    markdownRenderer.value.scrollToContent();
+}
 
 </script>
 
@@ -16,12 +37,12 @@ import Chatbot from './Chatbot.vue'
 
       <div class="flex flex-column h-full">
         <!-- Catalys logo -->
-        <div class="flex flex-shrink-0">
+        <div class="flex flex-shrink-0 py-3">
           <img src="../assets/logo_color_no_background.svg" alt="Image" height="50" />
         </div>
         
         <!-- Area navigation menu -->
-        <div class="overflow-y-auto mt-3">          
+        <div class="overflow-y-auto mt-3">
           <a v-ripple
             class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round bg-indigo-500 hover:bg-indigo-500 text-white hover:text-white transition-duration-150 transition-colors p-ripple">
             <span class="font-medium">Content Player</span>
@@ -43,6 +64,7 @@ import Chatbot from './Chatbot.vue'
               <a v-ripple
                 class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple"
                 v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
+
                 <span class="font-medium">Chapter 2: An Introduction to Financial Statements</span>
                 <i class="pi pi-chevron-down ml-auto"></i>
               </a>
@@ -51,10 +73,10 @@ import Chatbot from './Chatbot.vue'
                 <li>
                   <a v-ripple
                     class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
-                    <span class="font-medium">The Four Financial Statements</span>
+                    <span class="font-medium" @click="testCall()">The Four Financial Statements</span>                    
                   </a>
                 </li>
-                <li>
+                <li> 
                   <a v-ripple
                     class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
                     <span class="font-medium">Preparing Financial Statements</span>
@@ -88,7 +110,7 @@ import Chatbot from './Chatbot.vue'
     <!-- Rendered markdown -->
     <div class="min-h-screen w-8 flex flex-column relative flex-auto">
       <div class="p-3 flex flex-column flex-auto max-h-screen">
-        <MarkdownRenderer />
+        <MarkdownRenderer ref="markdownRenderer"/>
       </div>
     </div>
 
