@@ -77,22 +77,6 @@ import Avatar from 'primevue/avatar';
       </div>
     </div>
     <div class="min-h-screen w-8 flex flex-column relative flex-auto">
-      <div
-        class="flex justify-content-between align-items-end px-5 surface-0 border-bottom-1 surface-border relative lg:static"
-        style="height:60px">
-        
-        <Avatar v-badge.danger="4" class="p-overlay-badge" icon="pi pi-user" size="xlarge" />
-        <!-- <ul
-          class="list-none p-0 m-0 hidden lg:flex lg:align-items-center select-none lg:flex-row
-                surface-section border-1 lg:border-none surface-border right-0 top-100 z-1 shadow-2 lg:shadow-none absolute lg:static">
-          <li class="border-top-1 surface-border lg:border-top-none">
-            <a v-ripple class="flex p-3 lg:px-3 lg:py-2 align-items-center hover:surface-100 font-medium border-round cursor-pointer
-                        transition-duration-150 transition-colors p-ripple">
-              <Avatar v-badge.danger="4" label="NS" size="large" />
-            </a>
-          </li>
-        </ul> -->
-      </div>
       <div class="p-5 flex flex-column flex-auto" style="height: 100px;">
         <MarkdownRenderer />
       </div>
