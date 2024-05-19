@@ -670,9 +670,10 @@ const scrollToContent = () => {
 onMounted(() => {
   const scrollToContentMounted = () => {
     console.log('Called MarkdownRenderer/scrollToContentMounted')
-    var element = this.$refs['TestAnchor'];
-    var top = element.offsetTop;
-    window.scrollTo(0, top);
+    
+    // var element = this.$refs['TestAnchor'];
+    // var top = element.offsetTop;
+    // window.scrollTo(0, top);
   }
 })
 
