@@ -4,6 +4,7 @@ import App from './App.vue'
 import CourseDetailsView from './components/CourseDetailsView.vue'
 import PlayerView from './components/PlayerView.vue'
 import AccountRegisterView from './components/AccountRegisterView.vue'
+import AccountFreeTrialView from './components/AccountFreeTrialView.vue'
 import PrimeVue from 'primevue/config';
 import Ripple  from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
@@ -21,9 +22,11 @@ app.use(PrimeVue, { ripple : true });
 
 // Register router
 const routes = [
+  { path: '/', redirect: '/portal' },
   { path: '/portal', component: CourseDetailsView },
   { path: '/player', component: PlayerView },
-  { path: '/account/register', component: AccountRegisterView },
+  { path: '/account/trial', component: AccountFreeTrialView },
+  { path: '/account/register', component: AccountRegisterView }
 ]
 
 const router = createRouter({

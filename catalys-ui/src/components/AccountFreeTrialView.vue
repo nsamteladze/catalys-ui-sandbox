@@ -14,7 +14,7 @@ var checked = ref(false);
 
 <template>
   <div class="surface-ground px-4 py-8 md:px-6 lg:px-8 flex-1 overflow-auto">
-    <div class="text-900 font-medium text-xl mb-3">Register for Full Catalys Program</div>
+    <div class="text-900 font-medium text-xl mb-3">Free Trial Registration</div>
     <p class="m-0 mb-4 p-0 text-600 line-height-3 mr-3">Please complete the below form to register for a free trial of the Catalys program.</p>
     <div class="surface-card p-4 shadow-2 border-round">
         <div class="grid formgrid p-fluid">

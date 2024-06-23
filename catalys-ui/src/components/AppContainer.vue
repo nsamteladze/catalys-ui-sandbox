@@ -28,9 +28,11 @@ watch(
 
       <div class="flex flex-column h-full">
         <!-- Catalys logo -->
-        <div class="flex flex-shrink-0 py-3">
-          <img src="../assets/logo_color_no_background.svg" alt="Image" height="50" />
-        </div>
+        <RouterLink to="/">
+          <div class="flex flex-shrink-0 py-3">
+            <img src="../assets/logo_color_no_background.svg" alt="Image" height="50" />
+          </div>
+        </RouterLink>
         
         <!-- Area navigation menu -->
         <div class="overflow-y-auto mt-3">
@@ -134,6 +136,12 @@ watch(
               <ul
                 class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                 <li>
+                  <RouterLink to="/account/trial">
+                    <a  v-ripple
+                        class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
+                      <span class="font-medium">Free Trial</span>                    
+                    </a>
+                  </RouterLink>
                   <RouterLink to="/account/register">
                     <a  v-ripple
                         class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
