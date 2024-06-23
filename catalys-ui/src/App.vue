@@ -1,11 +1,11 @@
-<script lang="ts" setup>
-import ContentPlayer from './components/ContentPlayer.vue'
+<script setup lang="ts">
+import AppContainer from './components/AppContainer.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <ContentPlayer />
+      <AppContainer />
     </div>
   </header>
 </template>

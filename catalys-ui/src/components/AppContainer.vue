@@ -1,18 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, watch, reactive } from 'vue'
-import InputText from 'primevue/inputtext';
-import markdownit from 'markdown-it';
-import MarkdownRenderer from './MarkdownRenderer.vue'
-import CourseMaterial from './CourseMaterial.vue'
+
 import Chatbot from './Chatbot.vue'
-
-// const scrollToContent = () => {
-//   this.$alert('Scrolling to content...')
-
-//   // var element = this.$refs[refName];
-//   // var top = element.offsetTop;
-//   // window.scrollTo(0, top);
-// }
 
 let testCall: any = {}
 
@@ -26,16 +15,6 @@ watch(
     console.log(`Area is: ${area}`)
   }
 )
-
-onMounted(() => {
-  const testCallMounted = () => {
-    markdownRenderer.value.scrollToContent();
-  }
-})
-
-const changeArea = (value: any) => {
-  obj.area == value
-}
 
 </script>
 
@@ -55,23 +34,27 @@ const changeArea = (value: any) => {
         
         <!-- Area navigation menu -->
         <div class="overflow-y-auto mt-3">
-          <a v-ripple
-            class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round p-ripple"
-            :class="{ 'bg-indigo-500 text-white': obj.area == 1, 'text-gray-800': obj.area != 1}"
-            @click="obj.area = 1">
-            <span class="font-medium">Content Player</span>
-          </a>
-          <a v-ripple
-            class="m-3 mt-0 flex align-items-center cursor-pointer p-3 border-round p-ripple"
-            :class="{ 'bg-indigo-500 text-white': obj.area == 2, 'text-gray-800': obj.area != 2}"
-            @click="obj.area = 2">
-            <span class="font-medium">Student Portal</span>
-          </a>
+          <RouterLink to="/player">
+            <a  v-ripple
+                class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round p-ripple"
+                :class="{ 'bg-indigo-500 text-white': obj.area == 1, 'text-gray-800': obj.area != 1}"
+                @click="obj.area = 1">
+              <span class="font-medium">Content Player</span>
+            </a>
+          </RouterLink>
+          <RouterLink to="/portal">
+            <a v-ripple
+              class="m-3 mt-0 flex align-items-center cursor-pointer p-3 border-round p-ripple"
+              :class="{ 'bg-indigo-500 text-white': obj.area == 2, 'text-gray-800': obj.area != 2}"
+              @click="obj.area = 2">
+              <span class="font-medium">Student Portal</span>
+            </a>
+          </RouterLink>
           <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800" />
         </div>
 
 
-        <!-- Course navigation menu -->
+        <!-- Sub-navigation menu -->
         <div class="overflow-y-auto">
           <ul class="list-none p-3 m-0" v-show="obj.area == 1">
             <li>
@@ -90,7 +73,7 @@ const changeArea = (value: any) => {
                 <li>
                   <a v-ripple
                     class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
-                    <span class="font-medium" @click="testCall()">The Four Financial Statements</span>                    
+                    <span class="font-medium">The Four Financial Statements</span>                    
                   </a>
                 </li>
                 <li> 
@@ -120,6 +103,47 @@ const changeArea = (value: any) => {
               </ul>
             </li>
           </ul>
+
+          <ul class="list-none p-3 m-0" v-show="obj.area == 2">
+            <li>
+              <a v-ripple
+                class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple"
+                v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
+
+                <span class="font-medium">Courses</span>
+                <i class="pi pi-chevron-down ml-auto"></i>
+              </a>
+              <ul
+                class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                <li>
+                  <a v-ripple
+                    class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
+                    <span class="font-medium">Accounting & Finance</span>                    
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a v-ripple
+                class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple"
+                v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
+
+                <span class="font-medium">My Account</span>
+                <i class="pi pi-chevron-down ml-auto"></i>
+              </a>
+              <ul
+                class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                <li>
+                  <RouterLink to="/account/register">
+                    <a  v-ripple
+                        class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors p-ripple">
+                      <span class="font-medium">Register</span>                    
+                    </a>
+                  </RouterLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -127,8 +151,7 @@ const changeArea = (value: any) => {
     <!-- Rendered markdown -->
     <div class="min-h-screen w-4 flex flex-column relative flex-auto">
       <div class="p-3 flex flex-column flex-auto max-h-screen">
-        <MarkdownRenderer ref="markdownRenderer" v-show="obj.area == 1"/>
-        <CourseMaterial v-show="obj.area == 2"/>
+        <RouterView />
       </div>
     </div>
 
