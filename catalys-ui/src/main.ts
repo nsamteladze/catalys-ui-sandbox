@@ -5,9 +5,6 @@ import CourseDetailsView from './components/CourseDetailsView.vue'
 import PlayerView from './components/PlayerView.vue'
 import AccountRegisterView from './components/AccountRegisterView.vue'
 import PrimeVue from 'primevue/config';
-import Button from 'primevue/button';
-import Toast from 'primevue/toast';
-import ToastService from 'primevue/toastservice';
 import Ripple  from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
 import BadgeDirective from 'primevue/badgedirective';
@@ -21,7 +18,6 @@ import 'primeflex/primeflex.css';
 const app = createApp(App);
 
 app.use(PrimeVue, { ripple : true });
-app.use(ToastService);
 
 // Register router
 const routes = [
@@ -36,9 +32,6 @@ const router = createRouter({
 })
 
 app.use(router)
-
-app.component('Button', Button);
-app.component('Toast', Toast);
 
 app.directive('ripple', Ripple);
 app.directive('styleclass', StyleClass);
