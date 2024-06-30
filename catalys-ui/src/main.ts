@@ -10,7 +10,7 @@ import StyleClass from 'primevue/styleclass';
 import BadgeDirective from 'primevue/badgedirective';
 
 import './assets/main.css'
-import 'primevue/resources/themes/saga-blue/theme.css';
+import 'primevue/resources/themes/aura-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';     
@@ -18,7 +18,9 @@ import 'primeflex/primeflex.css';
 const app = createApp(App);
 
 // Disable Ripple effect globally because it causes height issues
-app.use(PrimeVue, { ripple : false });
+app.use(PrimeVue, { 
+  ripple : false,
+});
 
 // Register router
 const routes = [

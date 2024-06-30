@@ -17,7 +17,7 @@ body #app header {
 }
 header{
   height: 100vh;
-  width: 150vh;
+  width: 120vh;
   display:flex;
   align-items:center;
   justify-content:center;

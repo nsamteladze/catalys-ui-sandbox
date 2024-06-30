@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted, watch, reactive } from 'vue'
+import { ref, onMounted, watch, reactive, computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Chatbot from './Chatbot.vue'
 
@@ -7,6 +8,7 @@ let testCall: any = {}
 
 const markdownRenderer = ref();
 
+const route = useRoute()
 const obj = reactive({ area: 1 })
 
 watch(
@@ -15,6 +17,10 @@ watch(
     console.log(`Area is: ${area}`)
   }
 )
+
+const showChatbot = computed(() => {
+  return route.path == "/player" 
+})
 
 </script>
 
@@ -37,22 +43,21 @@ watch(
         <!-- Area navigation menu -->
         <div class="overflow-y-auto mt-3">
           <RouterLink to="/player">
-            <a class="m-3 my-0 flex align-items-center cursor-pointer p-3 border-round"
-              :class="{ 'bg-indigo-500 text-white': obj.area == 1, 'text-gray-800': obj.area != 1}"
+            <a class="m-3 my-0 p-3 flex align-items-center justify-content-center cursor-pointer text-gray-800 transition-colors transition-duration-150"
+              :class="{ '': obj.area != 1, 'bg-primary-600 text-white': obj.area == 1}"
               @click="obj.area = 1">
               <span class="font-medium">Content Player</span>
             </a>
           </RouterLink>
           <RouterLink to="/portal">
-            <a class="m-3 mt-0 flex align-items-center cursor-pointer p-3 border-round"
-              :class="{ 'bg-indigo-500 text-white': obj.area == 2, 'text-gray-800': obj.area != 2}"
+            <a class="m-3 mt-0 p-3 flex align-items-center justify-content-center cursor-pointer text-gray-800 transition-colors transition-duration-150"
+              :class="{ '': obj.area != 2, 'bg-primary-600 text-white': obj.area == 2}"
               @click="obj.area = 2">
               <span class="font-medium">Student Portal</span>
             </a>
           </RouterLink>
           <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800" />
         </div>
-
 
         <!-- Sub-navigation menu -->
         <div class="overflow-y-auto">
@@ -61,36 +66,35 @@ watch(
               <span class="block p-3 pt-0 text-gray-600" style="text-transform: uppercase;">Financial Accounting</span>
             </li>
             <li>
-              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors"
+              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors"
                 v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
-
                 <span class="font-medium">Chapter 2: An Introduction to Financial Statements</span>
                 <i class="pi pi-chevron-down ml-auto"></i>
               </a>
               <ul
                 class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                 <li>
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">The Four Financial Statements</span>                    
                   </a>
                 </li>
                 <li> 
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">Preparing Financial Statements</span>
                   </a>
                 </li>
                 <li>
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">Comprehension Check</span>
                   </a>
                 </li>
                 <li>
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">Financial Statement Analysis</span>
                   </a>
                 </li>
                 <li>
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">Comprehension Check</span>
                   </a>
                 </li>
@@ -100,7 +104,7 @@ watch(
 
           <ul class="list-none p-3 m-0" v-show="obj.area == 2">
             <li>
-              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors"
+              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors"
                 v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
 
                 <span class="font-medium">Courses</span>
@@ -109,14 +113,14 @@ watch(
               <ul
                 class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                 <li>
-                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                  <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                     <span class="font-medium">Accounting & Finance</span>                    
                   </a>
                 </li>
               </ul>
             </li>
             <li>
-              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors"
+              <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors"
                 v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'slidedown', leaveToClass: 'hidden', leaveActiveClass: 'slideup' }">
                 <span class="font-medium">My Account</span>
                 <i class="pi pi-chevron-down ml-auto"></i>
@@ -125,12 +129,12 @@ watch(
                 class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                 <li>
                   <RouterLink to="/account/trial">
-                    <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                    <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                       <span class="font-medium">Free Trial</span>                    
                     </a>
                   </RouterLink>
                   <RouterLink to="/account/register">
-                    <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-indigo-500 text-gray-800 hover:text-white transition-duration-150 transition-colors">
+                    <a class="flex align-items-center cursor-pointer p-3 border-round hover:bg-primary-600 text-gray-800 hover:text-white transition-duration-150 transition-colors">
                       <span class="font-medium">Register</span>                    
                     </a>
                   </RouterLink>
@@ -142,15 +146,15 @@ watch(
       </div>
     </div>
 
-    <!-- Rendered markdown -->
-    <div class="min-h-screen w-4 flex flex-column relative flex-auto">
+    <!-- Page Content -->
+    <div class="min-h-screen flex flex-column relative flex-auto">
       <div class="p-3 flex flex-column flex-auto max-h-screen">
         <RouterView />
       </div>
     </div>
 
     <!-- Placeholder for Chatbot Interface -->
-    <div class="min-h-screen flex flex-column relative flex-auto">
+    <div v-if="showChatbot" class="min-h-screen flex flex-column relative flex-auto">
       <div class="py-3 pr-3 flex flex-column flex-auto max-h-screen">
           <Chatbot />
       </div>
