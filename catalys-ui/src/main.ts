@@ -6,7 +6,6 @@ import PlayerView from './components/PlayerView.vue'
 import AccountRegisterView from './components/AccountRegisterView.vue'
 import AccountFreeTrialView from './components/AccountFreeTrialView.vue'
 import PrimeVue from 'primevue/config';
-import Ripple  from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
 import BadgeDirective from 'primevue/badgedirective';
 
@@ -18,7 +17,8 @@ import 'primeflex/primeflex.css';
 
 const app = createApp(App);
 
-app.use(PrimeVue, { ripple : true });
+// Disable Ripple effect globally because it causes height issues
+app.use(PrimeVue, { ripple : false });
 
 // Register router
 const routes = [
@@ -36,7 +36,6 @@ const router = createRouter({
 
 app.use(router)
 
-app.directive('ripple', Ripple);
 app.directive('styleclass', StyleClass);
 app.directive('badge', BadgeDirective);
 
